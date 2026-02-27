@@ -1,3 +1,5 @@
+# Este comando substitui o conteúdo do README.md pelo texto corrigido
+cat <<EOF > README.md
 # 🛠️ Ultimate V-Tools v1.1.0
 
 O **Ultimate V-Tools** é uma central de ferramentas desenvolvida para maximizar a performance do Windows e automatizar tarefas complexas de sistema com apenas um clique.
@@ -18,8 +20,8 @@ O **Ultimate V-Tools** é uma central de ferramentas desenvolvida para maximizar
 
 ## 📦 Como baixar e usar?
 
-1. Acesse a aba [**Releases**](https://github.com/JhonVitor22/Ultimate-V-Tools/releases).
-2. Baixe o arquivo `Ultimate_V-Tools.exe`.
+1. Acesse a aba oficial de [**RELEASES AQUI**](https://github.com/JhonVitor22/Ultimate-V-Tools./releases).
+2. Baixe o arquivo \`Ultimate_V-Tools.exe\`.
 3. **Importante:** Execute sempre como **Administrador** para que os scripts de registro e PowerShell funcionem corretamente.
 
 ---
@@ -28,3 +30,4 @@ O **Ultimate V-Tools** é uma central de ferramentas desenvolvida para maximizar
 *O software executa scripts avançados de otimização de registro. Alguns antivírus podem emitir alertas de "falso positivo" devido às ferramentas de ativação embutidas. O projeto é seguro e focado em produtividade.*
 
 **Desenvolvido por:** [Jhon Vitor](https://github.com/JhonVitor22) 🦾
+EOF
