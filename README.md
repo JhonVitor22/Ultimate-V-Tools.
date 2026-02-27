@@ -1,5 +1,3 @@
-# Este comando substitui o conteúdo do README.md pelo texto corrigido
-cat <<EOF > README.md
 # 🛠️ Ultimate V-Tools v1.1.0
 
 O **Ultimate V-Tools** é uma central de ferramentas desenvolvida para maximizar a performance do Windows e automatizar tarefas complexas de sistema com apenas um clique.
