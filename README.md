@@ -1,31 +1,50 @@
-# 🛠️ Ultimate V-Tools v1.1.0
+# 🛠️ Ultimate V-tools v2.0.0 — Exclusive Edition
 
-O **Ultimate V-Tools** é uma central de ferramentas desenvolvida para maximizar a performance do Windows e automatizar tarefas complexas de sistema com apenas um clique.
-
-## 🚀 O que há de novo na v1.1.0?
-
-* **Interface Soft White:** Estética refinada em tons claros, focada em modernidade e conforto visual.
-* **Loading Dinâmico Win11:** Tela de splash exclusiva com animação senoidal inspirada no Windows 11.
-* **Log View Inteligente:** Console de comandos que aparece apenas quando necessário, mantendo a interface limpa.
-* **Estabilidade Reforçada:** Otimização de DPI para diferentes resoluções de monitor e correções de redimensionamento.
-
-## ⚡ Funcionalidades Principais
-
-* **Ativação e Upgrade:** Ativação de Windows (HWID) e Office (Ohook), além de conversão de versões (Home para Pro).
-* **Foco Gamer:** Redução de input lag de rede, Modo Jogo Supremo e limpeza de memória Standby.
-* **Otimização de Sistema:** Limpeza de arquivos temporários, aplicação de DNS Google e Plano de Desempenho Máximo.
-* **Central Office:** Links diretos para download das versões 365, 2024 e 2021.
-
-## 📦 Como baixar e usar?
-
-1. Acesse a aba oficial de [**RELEASES AQUI**](https://github.com/JhonVitor22/Ultimate-V-Tools./releases).
-2. Baixe o arquivo \`Ultimate_V-Tools.exe\`.
-3. **Importante:** Execute sempre como **Administrador** para que os scripts de registro e PowerShell funcionem corretamente.
+**Ultimate V-tools** é uma central de otimização e licenciamento de alto desempenho, desenvolvida para elevar a performance do Windows ao seu limite técnico. Esta versão 2.0.0 marca a migração total para a arquitetura **Electron + Node.js**, abandonando interfaces legadas em favor de uma experiência imersiva e fluida.
 
 ---
 
-### ⚠️ Nota de Segurança
-*O software executa scripts avançados de otimização de registro. Alguns antivírus podem emitir alertas de "falso positivo" devido às ferramentas de ativação embutidas. O projeto é seguro e focado em produtividade.*
+## 🚀 Novidades da Versão 2.0.0
 
-**Desenvolvido por:** [Jhon Vitor](https://github.com/JhonVitor22) 🦾
-EOF
+### 🎨 Experiência Visual (Front-end)
+* **Abertura Cinemática (Mushoku Tensei Vibe):** Splash screen com revelação de título progressiva e transparência total sobre o desktop, criando um efeito de boot épico.
+* **Chassis Acrylic (Bloom):** Interface em vidro fosco (Glassmorphism) sem bordas nativas do Windows, funcionando como um software exclusivo e minimalista.
+* **Sistema Chroma Glow:** Feedback visual dinâmico em cada botão:
+    - **Windows 11:** Azul Real 🔵
+    - **Office:** Laranja Clássico 🟠
+    - **Microsoft 365:** Roxo Ametista 🟣
+    - **Gamer Mode:** Vermelho Neon 🔴
+    - **Otimização:** Verde-Ciano 🟢
+* **Terminal Blue-Tech:** Console de logs em azul luminescente, projetado para monitoramento técnico de todas as operações de baixo nível.
+
+### ⚙️ Engenharia de Sistema (Back-end)
+* **Motor de Download Nativo:** Protocolo HTTP/HTTPS via Node.js para baixar imagens `.img` oficiais da Microsoft (CDN) com barra de progresso cinética interna.
+* **Execução Blindada:** Scripts PowerShell convertidos para **Base64** antes da execução, garantindo integridade e bypass de falsos positivos.
+* **Otimização Gamer Real:** Redução de *Input Lag* via TCP Auto-Tuning e priorização de ciclos de CPU (Xeon Optimized).
+* **Upgrade de Versão:** Ferramenta integrada para transição imediata de Windows Home para Pro.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+* **Runtime:** [Electron.js](https://www.electronjs.org/)
+* **Engine:** Node.js (V8)
+* **Interface:** HTML5 / CSS3 (Modern Flexbox)
+* **Shell:** PowerShell Core (Kernel Interfacing)
+
+---
+
+## 📦 Como Utilizar
+
+1. **Privilégios:** O software exige execução como **Administrador**.
+2. **Portabilidade:** Execute o `.exe` gerado na pasta `dist`. Não requer instalação.
+3. **Monitoramento:** Utilize o terminal azul para validar o sucesso de cada script injetado no Windows.
+
+
+
+---
+
+## 📜 Licença e Créditos
+
+Desenvolvido por **Jonatan Vitor**.
+*Foco em precisão estética, lógica superior e eficiência de hardware.*
