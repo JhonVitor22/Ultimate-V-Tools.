@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate V-tools v2.2.1</title>
+    <style>
+        /* 1. FONTE E CORES */
+        @font-face {
+            font-family: 'Harmonic Essence';
+            src: url('fontes/HarmonicEssence.ttf') format('truetype');
+        }
+
+        :root {
+            --btn-bg: rgba(43, 43, 43, 0.7);
+            --btn-hover: rgba(61, 61, 61, 0.9);
+            --azul-win: #0078D4;
+            --off-orange: #d83b01;
+            --o365-purple: #8660c5;
+            --gamer-red: #ff4141;
+            --opt-cyan: #00f2ff;
+            --text-main: #e0e0e0;
+        }
+
+        body {
+            margin: 0; padding: 20px; font-family: 'Segoe UI', sans-serif;
+            background-color: transparent; color: var(--text-main);
+            overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh;
+        }
+
+        /* --- SPLASH SCREEN TRANSPARENTE --- */
+        #splash-screen {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: transparent; z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1.2s ease-in-out; -webkit-app-region: drag;
+        }
+
+        .splash-title { color: var(--azul-win); font-size: 42px; font-weight: bold; margin: 0; clip-path: inset(0 100% 0 0); animation: revelarEsquerda 2.5s linear forwards; text-shadow: 0 0 20px rgba(0, 0, 0, 0.5); }
+        .splash-edition { font-family: 'Harmonic Essence', serif; font-size: 24px; margin-top: 8px; letter-spacing: 5px; font-weight: bold; background: linear-gradient(90deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background clip: text; -webkit-text-fill-color: transparent; opacity: 0; clip-path: inset(0 50% 0 50%); animation: revelarCentro 1.8s forwards; animation-delay: 3s; }
+        .splash-welcome { font-size: 16px; font-weight: 300; margin-top: 18px; opacity: 0; animation: bloomFinal 1.2s forwards; animation-delay: 4.8s; }
+        .loader { border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid var(--azul-win); border-radius: 50%; width: 28px; height: 28px; margin-top: 30px; opacity: 0; animation: spin 1s linear infinite, bloomFinal 1.5s forwards; animation-delay: 5.2s; }
+
+        @keyframes revelarEsquerda { to { clip-path: inset(0 0% 0 0); } }
+        @keyframes revelarCentro { 0% { opacity: 0; clip-path: inset(0 50% 0 50%); } 100% { opacity: 1; clip-path: inset(0 0% 0 0); } }
+        @keyframes bloomFinal { to { opacity: 1; } }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* --- INTERFACE PRINCIPAL --- */
+        #main-ui { 
+            display: none; width: 100%; max-width: 480px; position: relative;
+            background: rgba(20, 20, 20, 0.7); backdrop-filter: blur(25px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; 
+            padding: 25px 30px; opacity: 0; transition: opacity 1.5s ease-in-out;
+            display: flex; flex-direction: column; overflow: hidden; 
+        }
+
+        .scroll-area { flex: 1; overflow-y: auto; margin-bottom: 10px; padding-right: 5px; }
+        .scroll-area::-webkit-scrollbar { width: 4px; }
+        .scroll-area::-webkit-scrollbar-thumb { background: var(--azul-win); border-radius: 10px; }
+
+        .header-drag-area { -webkit-app-region: drag; cursor: move; padding-bottom: 10px; }
+        #close-btn { position: absolute; top: 15px; right: 20px; font-size: 14px; color: #888; cursor: pointer; -webkit-app-region: no-drag; transition: 0.2s; z-index: 100;}
+        #close-btn:hover { color: #e74c3c; }
+        .header-title { text-align: center; color: var(--azul-win); font-size: 26px; margin-bottom: 20px; font-weight: bold; }
+        
+        /* BOTÕES E CORES DINÂMICAS */
+        .btn { background-color: var(--btn-bg); border: 1px solid rgba(255,255,255,0.05); color: var(--text-main); padding: 12px 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 15px; font-size: 13px; width: 100%; margin-bottom: 8px; transition: 0.3s; }
+        
+        .btn-win:hover { border-color: var(--azul-win); box-shadow: 0 0 10px rgba(0, 120, 212, 0.3); }
+        .btn-off:hover { border-color: var(--off-orange); box-shadow: 0 0 10px rgba(216, 59, 1, 0.3); }
+        .btn-365:hover { border-color: var(--o365-purple); box-shadow: 0 0 10px rgba(134, 96, 197, 0.3); }
+        .btn-opt:hover { border-color: var(--opt-cyan); box-shadow: 0 0 10px rgba(0, 242, 255, 0.3); }
+        .btn-gamer:hover { border-color: var(--gamer-red); box-shadow: 0 0 10px rgba(255, 65, 65, 0.3); }
+
+        .btn-icon { width: 20px; height: 20px; object-fit: contain; }
+
+        .accordion { background-color: var(--btn-bg); border: 1px solid rgba(255,255,255,0.05); color: var(--text-main); padding: 12px 15px; border-radius: 6px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 13px; width: 100%; margin-top: 10px; margin-bottom: 5px; font-weight: bold; }
+        .panel { padding: 0; display: none; overflow: hidden; margin-bottom: 5px; }
+        
+        #terminal { 
+            background-color: rgba(5, 5, 5, 0.9); border-radius: 6px; padding: 12px; 
+            height: 160px; margin-bottom: 10px; overflow-y: auto;
+            font-family: 'Consolas', monospace; font-size: 11px; color: #00a4ef; 
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-container { display: flex; justify-content: flex-end; margin-top: auto; padding-top: 5px; }
+        .footer-link { font-size: 11px; font-style: italic; color: #555; text-decoration: none; cursor: pointer; transition: 0.3s; }
+        .footer-link:hover { color: var(--azul-win); text-shadow: 0 0 8px rgba(0, 120, 212, 0.5); }
+    </style>
+</head>
+<body>
+
+    <div id="splash-screen">
+        <h1 class="splash-title">Ultimate V-tools</h1>
+        <div class="splash-edition">EXTREME EDITION</div>
+        <p class="splash-welcome" id="splash-name">Bem-vindo(a), Carregando...</p>
+        <div class="loader"></div>
+    </div>
+
+    <div id="main-ui">
+        <div id="close-btn" onclick="window.close()">✕</div>
+        <div class="header-drag-area"><div class="header-title">Ultimate V-tools</div></div>
+
+        <div class="scroll-area">
+            <button class="accordion">Sistema & Licenciamento ▼</button>
+            <div class="panel">
+                <button class="btn btn-opt" onclick="executar('hwInfo')">🖥️ Relatório de Hardware</button>
+                <button class="btn btn-win" onclick="executar('activateWin')"><img src="imagens/Windows 11.png" class="btn-icon"> Ativar Windows (HWID)</button>
+                <button class="btn btn-off" onclick="executar('activateOff')"><img src="imagens/Office.png" class="btn-icon"> Ativar Office (Ohook)</button>
+            </div>
+
+            <button class="accordion">Otimização de Performance ▼</button>
+            <div class="panel">
+                <button class="btn btn-opt" onclick="executar('deepClean')">🧹 Limpeza de Temporários</button>
+                <button class="btn btn-opt" onclick="executar('dnsGoogle')">🌐 DNS Google (Velocidade)</button>
+                <button class="btn btn-gamer" onclick="executar('reduceLag')">⚡ Reduzir Input Lag</button>
+            </div>
+
+            <button class="accordion">Download Office Pack ▼</button>
+            <div class="panel">
+                <button class="btn btn-365" onclick="executar('downOff365')"><img src="imagens/365.png" class="btn-icon"> Baixar Office 365</button>
+                <button class="btn btn-off" onclick="executar('downOff2024')"><img src="imagens/Office.png" class="btn-icon"> Baixar Office 2024</button>
+                <button class="btn btn-off" onclick="executar('downOff2021')"><img src="imagens/Office.png" class="btn-icon"> Baixar Office 2021</button>
+            </div>
+        </div> 
+
+        <div id="terminal"></div>
+        
+        <div class="footer-container">
+            <a id="github-link" class="footer-link">By: Jhon Vitor</a>
+        </div>
+    </div>
+
+    <script>
+        const { shell, ipcRenderer } = require('electron'); 
+        const os = require('os');
+        const Executor = require('./executor'); 
+
+        const username = os.userInfo().username;
+        const splashName = document.getElementById('splash-name');
+        if(splashName) splashName.innerText = `Bem-vindo(a), ${username}`;
+
+        // 1. CARREGAMENTO
+        setTimeout(() => {
+            const splash = document.getElementById('splash-screen');
+            const mainUi = document.getElementById('main-ui');
+            splash.style.opacity = '0';
+            setTimeout(() => { 
+                splash.style.display = 'none'; 
+                mainUi.style.display = 'flex'; 
+                setTimeout(() => { mainUi.style.opacity = '1'; }, 50);
+                iniciarTerminal(username); 
+                ajustarJanela();
+            }, 1200);
+        }, 7800);
+
+        function ajustarJanela() {
+            setTimeout(() => {
+                const altura = document.getElementById('main-ui').scrollHeight + 40;
+                ipcRenderer.send('resize-window', altura);
+            }, 100);
+        }
+
+        // 2. ACORDEÕES
+        const accordions = document.getElementsByClassName("accordion");
+        for (let i = 0; i < accordions.length; i++) {
+            accordions[i].addEventListener("click", function() {
+                this.innerHTML = this.innerHTML.includes("▼") ? this.innerHTML.replace("▼", "▲") : this.innerHTML.replace("▲", "▼");
+                const panel = this.nextElementSibling;
+                panel.style.display = panel.style.display === "block" ? "none" : "block";
+                ajustarJanela();
+            });
+        }
+
+        // 3. TERMINAL
+        const terminal = document.getElementById('terminal');
+        function iniciarTerminal(nome) { 
+            terminal.innerHTML = `<span style="color:#666">>>> Admin: Concedido | Bem-vindo, ${nome}!</span><br><span style="color:#666">> Sistema pronto.</span><br>`; 
+        }
+
+        function executar(comando) {
+            terminal.innerHTML += `<br><span style="color:#f1c40f">> Solicitando: ${comando}...</span><br>`;
+            terminal.scrollTop = terminal.scrollHeight;
+            Executor.run(comando, 
+                (log) => { 
+                    terminal.innerHTML += `<span style="color:#00a4ef">${log.replace(/\n/g, '<br>')}</span><br>`; 
+                    terminal.scrollTop = terminal.scrollHeight; 
+                },
+                null, 
+                (resultado) => { 
+                    terminal.innerHTML += `<span style="color:#00ffcc">> Operação Finalizada.</span><br>`; 
+                    terminal.scrollTop = terminal.scrollHeight;
+                }
+            );
+        }
+
+        document.getElementById('github-link').addEventListener('click', () => {
+            shell.openExternal('https://github.com/JhonVitor22'); 
+        });
+    </script>
+</body>
+</html>
