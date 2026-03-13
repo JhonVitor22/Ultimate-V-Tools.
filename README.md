@@ -39,7 +39,7 @@ Build System: electron-builder (Portable & Code Signed)
 ## 📦 Como Utilizar
 
 1. **Privilégios:** O software exige execução como **Administrador**.
-2. **Portabilidade:** Execute o `.exe` gerado na pasta `dist`. Não requer instalação.
+2. **Portabilidade:** Execute o `.exe`. Não requer instalação.
 3. **Monitoramento:** Utilize o terminal azul para validar o sucesso de cada script injetado no Windows.
 
 
