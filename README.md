@@ -1,36 +1,38 @@
-# 🛠️ Ultimate V-tools v2.0.0 — Exclusive Edition
+🛠️ Ultimate V-Tools — Release V2.2.4
 
-**Ultimate V-tools** é uma central de otimização e licenciamento de alto desempenho, desenvolvida para elevar a performance do Windows ao seu limite técnico. Esta versão 2.0.0 marca a migração total para a arquitetura **Electron + Node.js**, abandonando interfaces legadas em favor de uma experiência imersiva e fluida.
+Esta versão marca a transição do software para uma arquitetura híbrida de alta performance, focando em estabilidade para ambientes de rede e otimização estética.
 
+**💎 Principais Atualizações:**
+
+Identidade Visual Reestruturada: Integração de novos ativos gráficos (App.ico) com acabamento metálico, alinhados à estética de precisão técnica.
+
+Arquitetura Híbrida (Electron + Rust): Implementação do core em Rust (uvt-core) para execução de tarefas de baixo nível com máxima eficiência e baixo consumo de memória.
+
+Segurança de Instância: Implementação de Single Instance Lock no processo principal, impedindo múltiplas execuções simultâneas e garantindo a integridade dos processos de rede.
+
+Interface Estabilizada: Correção do "bug de encolhimento" da janela com dimensões fixas de 500x650px e efeitos de transição fade-in na inicialização.
+
+⚙️ Mudanças Técnicas:
+
+IPC Bridge: Refatoração da comunicação entre o processo de renderização e o sistema via ipcMain e ipcRenderer.
+
+Gestão de Dependências: Otimização do package.json para builds portáteis e exclusão de binários pesados do repositório via .gitignore estratégico.
+
+Compatibilidade: Preparado para ambientes Windows com suporte a execução em segundo plano e controles de janela customizados.
 ---
 
-## 🚀 Novidades da Versão 2.0.0
+🛠️ Tecnologias Utilizadas
+Core Engine: Rust (High-Performance & Memory Safety)
 
-### 🎨 Experiência Visual (Front-end)
-* **Abertura Cinemática (Mushoku Tensei Vibe):** Splash screen com revelação de título progressiva e transparência total sobre o desktop, criando um efeito de boot épico.
-* **Chassis Acrylic (Bloom):** Interface em vidro fosco (Glassmorphism) sem bordas nativas do Windows, funcionando como um software exclusivo e minimalista.
-* **Sistema Chroma Glow:** Feedback visual dinâmico em cada botão:
-    - **Windows 11:** Azul Real 🔵
-    - **Office:** Laranja Clássico 🟠
-    - **Microsoft 365:** Roxo Ametista 🟣
-    - **Gamer Mode:** Vermelho Neon 🔴
-    - **Otimização:** Verde-Ciano 🟢
-* **Terminal Blue-Tech:** Console de logs em azul luminescente, projetado para monitoramento técnico de todas as operações de baixo nível.
+Runtime UI: Electron.js (Chromium + Node.js)
 
-### ⚙️ Engenharia de Sistema (Back-end)
-* **Motor de Download Nativo:** Protocolo HTTP/HTTPS via Node.js para baixar imagens `.img` oficiais da Microsoft (CDN) com barra de progresso cinética interna.
-* **Execução Blindada:** Scripts PowerShell convertidos para **Base64** antes da execução, garantindo integridade e bypass de falsos positivos.
-* **Otimização Gamer Real:** Redução de *Input Lag* via TCP Auto-Tuning e priorização de ciclos de CPU (Xeon Optimized).
-* **Upgrade de Versão:** Ferramenta integrada para transição imediata de Windows Home para Pro.
+Interface: HTML5 / CSS3 (Modern Flexbox & Glassmorphism)
 
----
+Fonts: Montserrat Bold & Killing Harmonic (Elite Typography)
 
-## 🛠️ Tecnologias Utilizadas
+Arquitetura: Híbrida (Native Binaries + Web-based View)
 
-* **Runtime:** [Electron.js](https://www.electronjs.org/)
-* **Engine:** Node.js (V8)
-* **Interface:** HTML5 / CSS3 (Modern Flexbox)
-* **Shell:** PowerShell Core (Kernel Interfacing)
+Build System: electron-builder (Portable & Code Signed)
 
 ---
 
