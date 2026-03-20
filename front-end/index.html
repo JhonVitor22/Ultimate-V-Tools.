@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate V-Tools v2.2.5 Elite</title>
+    <style>
+        * { 
+            -webkit-user-select: none; 
+            user-select: none; 
+            -webkit-user-drag: none; 
+            box-sizing: border-box; 
+            outline: none;
+        }
+        #terminal, #terminal * { 
+            -webkit-user-select: text !important; 
+            user-select: text !important; 
+        }
+
+        @font-face { font-family: 'MontserratBold'; src: url('fontes/Montserrat-Bold.ttf') format('truetype'); }
+        @font-face { font-family: 'KillingHarmonic'; src: url('fontes/Killing-Harmonic.ttf') format('truetype'); }
+
+        :root {
+            --btn-bg: rgba(43, 43, 43, 0.7);
+            --btn-hover: rgba(61, 61, 61, 0.9);
+            --azul-win: #0078D4;
+            --off-purple: #8660c5;
+            --off-classic: #d83b01;
+            --git-dark: #24292e;
+            --opt-cyan: #00f2ff;
+            --n1-gold: #ffcc41;
+            --gamer-red: #ff4141;
+            --text-main: #e0e0e0;
+        }
+
+        body {
+            margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif;
+            background-color: transparent !important; color: var(--text-main);
+            overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh;
+        }
+
+        #splash-screen {
+            position: absolute; inset: 0; 
+            background: transparent !important; z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1.2s ease-in-out; 
+        }
+
+        #main-ui { 
+            display: none; width: 500px; height: 650px; position: absolute;
+            background: rgba(20, 20, 20, 0.65); backdrop-filter: blur(25px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; 
+            padding: 25px 30px; opacity: 0; transition: opacity 1.5s ease;
+            flex-direction: column; overflow: hidden;
+            background-image: url('imagens/background.jpg'); background-size: cover; background-position: center;
+        }
+
+        .splash-title { 
+            font-family: 'MontserratBold', sans-serif; color: var(--azul-win); font-size: 36px; 
+            text-transform: uppercase; font-weight: 800; clip-path: inset(0 100% 0 0); 
+            animation: revelarEsquerda 2.5s linear forwards; text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); 
+        }
+
+        .splash-edition { 
+            font-family: 'KillingHarmonic', serif; font-size: 20px; margin-top: 5px; letter-spacing: 3px; 
+            font-weight: bold; background: linear-gradient(90deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); 
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; 
+            opacity: 0; clip-path: inset(0 50% 0 50%); animation: revelarCentro 1.8s forwards; animation-delay: 3s; 
+        }
+
+        .splash-welcome { font-size: 15px; font-weight: 400; margin-top: 15px; opacity: 0; animation: bloomFinal 1.2s forwards; animation-delay: 4.8s; color: #fff; text-shadow: 0 2px 10px #000; }
+        .loader { border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid var(--opt-cyan); border-radius: 50%; width: 28px; height: 28px; margin-top: 25px; opacity: 0; animation: spin 1s linear infinite, bloomFinal 1.5s forwards; animation-delay: 5.2s; }
+
+        @keyframes revelarEsquerda { to { clip-path: inset(0 0% 0 0); } }
+        @keyframes revelarCentro { 0% { opacity: 0; clip-path: inset(0 50% 0 50%); } 100% { opacity: 1; clip-path: inset(0 0% 0 0); } }
+        @keyframes bloomFinal { to { opacity: 1; } }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .window-controls { position: absolute; top: 0; right: 0; display: flex; z-index: 20000; }
+        .control-btn { cursor: pointer; width: 46px; height: 32px; display: flex; align-items: center; justify-content: center; transition: 0.2s; color: #888; font-size: 14px; }
+        .control-btn:hover { background-color: rgba(255, 255, 255, 0.1); color: #fff; }
+        .close:hover { background-color: #e81123 !important; color: #fff; }
+
+        /* ARRASTE CIRÚRGICO */
+        .header-drag-area { cursor: move; padding-bottom: 10px; width: 100%; text-align: center; }
+        .header-title { font-family: 'MontserratBold', sans-serif; font-size: 22px; font-weight: 800; text-transform: uppercase; background: linear-gradient(180deg, #fff 0%, var(--azul-win) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; pointer-events: none;}
+        .header-edition { font-family: 'KillingHarmonic', serif; font-size: 12px; letter-spacing: 2px; font-weight: bold; background: linear-gradient(90deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; margin-top: -5px; pointer-events: none;}
+
+        .scroll-area { flex: 1; overflow-y: auto; margin-bottom: 10px; padding-right: 5px; }
+        .scroll-area::-webkit-scrollbar { width: 4px; }
+        .scroll-area::-webkit-scrollbar-thumb { background: var(--opt-cyan); border-radius: 10px; }
+
+        .btn { background-color: var(--btn-bg); border: 1px solid rgba(255,255,255,0.05); color: var(--text-main); padding: 12px 15px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 15px; font-size: 13px; width: 100%; margin-bottom: 8px; transition: 0.3s; }
+        .btn:hover { border-color: var(--opt-cyan); box-shadow: 0 0 10px rgba(0, 242, 255, 0.3); background-color: var(--btn-hover); }
+        
+        .btn-win:hover { border-color: var(--azul-win) !important; box-shadow: 0 0 10px rgba(0, 120, 212, 0.4) !important; }
+        .btn-off:hover { border-color: var(--off-purple) !important; box-shadow: 0 0 10px rgba(134, 96, 197, 0.4) !important; }
+        .btn-off-classic:hover { border-color: var(--off-classic) !important; box-shadow: 0 0 10px rgba(216, 59, 1, 0.4) !important; }
+        .btn-github:hover { border-color: #fff !important; box-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important; background-color: var(--git-dark) !important; }
+
+        .btn img { flex-shrink: 0; }
+
+        .accordion { background-color: var(--btn-bg); border: 1px solid rgba(255,255,255,0.05); color: var(--text-main); padding: 12px 15px; border-radius: 6px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 13px; width: 100%; margin-top: 10px; margin-bottom: 5px; font-weight: bold; }
+        .panel { padding: 5px 0; display: none; overflow: hidden; margin-bottom: 5px; }
+
+        #terminal { 
+            font-family: 'Consolas', monospace; font-size: 11px; background: rgba(0,0,0,0.5); 
+            padding: 15px; border-radius: 8px; height: 160px; overflow-y: auto; color: var(--opt-cyan); 
+            border: 1px solid rgba(0, 242, 255, 0.2); 
+        }
+        .footer-container { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 5px; }
+
+        @keyframes spinBar {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+        #progress-bar {
+            background: linear-gradient(90deg, var(--opt-cyan), #ffffff, var(--opt-cyan));
+            background-size: 200% 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="splash-screen" data-tauri-drag-region>
+        <h1 class="splash-title" style="pointer-events: none;">Ultimate V-Tools</h1>
+        <div class="splash-edition" style="pointer-events: none;">Elite Edition</div>
+        <p class="splash-welcome" id="user-display-name" data-i18n="splashWelcome" style="pointer-events: none;">Carregando Credenciais...</p>
+        <div class="loader"></div>
+    </div>
+
+    <div id="main-ui">
+        <div class="window-controls">
+            <div class="control-btn min" id="btn-min">−</div>
+            <div class="control-btn close" id="btn-close">✕</div>
+        </div>
+        
+        <div class="header-drag-area" data-tauri-drag-region>
+            <div class="header-title" data-i18n="headerTitle">Ultimate V-Tools</div>
+            <div class="header-edition">ELITE EDITION</div>
+        </div>
+
+        <div class="scroll-area">
+            <button class="accordion" data-i18n="accSistema">Sistema & Licenciamento ▼</button>
+            <div class="panel">
+                <button class="btn" onclick="btnHwInfo()" data-i18n="btnHw">🔍 Relatório de Hardware</button>
+                <button class="btn btn-win" onclick="btnAtivarWin('hwid')"><img src="./imagens/win11.png" width="20"> <span data-i18n="btnWinHwid">Ativar Windows (HWID)</span></button>
+                <button class="btn btn-win" onclick="btnAtivarWin('kms')"><img src="./imagens/win11.png" width="20"> <span data-i18n="btnWinKms">Ativar Windows (KMS Online)</span></button>
+                <button class="btn btn-off-classic" onclick="btnAtivarWin('office')"><img src="./imagens/office.png" width="20"> <span data-i18n="btnOffOhook">Ativar Office (Ohook)</span></button>
+            </div>
+
+            <button class="accordion" data-i18n="accPerf">Otimização de Performance ▼</button>
+            <div class="panel">
+                <button class="btn" onclick="btnDeepClean()" data-i18n="btnClean">🧹 Limpeza de Temporários</button>
+                <button class="btn" onclick="btnBoostKernel()" data-i18n="btnKernel">⚡ Boost Kernel</button>
+                <button class="btn" onclick="btnOptimizeRam()" data-i18n="btnRam">🧠 Otimizar Memória RAM</button>
+                <button class="btn" onclick="btnDiskRescue()" data-i18n="btnDisk">💾 Resgate de Disco (Compact)</button>
+            </div>
+
+            <button class="accordion" data-i18n="accRede">Teste de Rede ▼</button>
+            <div class="panel">
+                <div style="display:flex; gap:5px; margin-bottom:8px; padding: 0 5px;">
+                    <input type="text" id="input-ping" placeholder="Ex: 8.8.8.8" style="flex:1; background:rgba(0,0,0,0.3); border:1px solid #333; color:#fff; padding:8px; border-radius:4px; outline:none; font-size:12px;">
+                </div>
+                <button class="btn" onclick="btnPing(false)" data-i18n="btnPing">📡 Ping (4x)</button>
+                <button class="btn" onclick="btnRede('lag')" data-i18n="btnLag">🏎️ Otimizar Latência</button>
+                <button class="btn" onclick="btnRede('dns')" data-i18n="btnDns">🌐 Aplicar DNS Google (8.8.8.8)</button>
+            </div>
+
+            <button class="accordion" data-i18n="accOffice">Downloads Office (Oficial) ▼</button>
+            <div class="panel">
+                <button class="btn btn-off" onclick="iniciarDownloadSilencioso('https://c2rsetup.officeapps.live.com/c2r/download.aspx?ProductreleaseID=O365ProPlusRetail&platform=x64&language=pt-br&version=O16GA', 'Office365ProPlus.exe')"><img src="./imagens/office365.png" width="20">Office 365</button>
+                <button class="btn btn-off-classic" onclick="iniciarDownloadSilencioso('https://c2rsetup.officeapps.live.com/c2r/download.aspx?ProductreleaseID=HomeBusiness2024Retail&platform=x64&language=pt-br&version=O16GA', 'Office2024HomeBusiness.exe')"><img src="./imagens/office.png" width="20">Office 2024</button>
+                <button class="btn btn-off-classic" onclick="iniciarDownloadSilencioso('https://c2rsetup.officeapps.live.com/c2r/download.aspx?ProductreleaseID=HomeBusiness2021Retail&platform=x64&language=pt-br&version=O16GA', 'Office2021HomeBusiness.exe')"><img src="./imagens/office.png" width="20">Office 2021</button>
+            </div>
+
+            <button class="accordion" data-i18n="accSuporte">Suporte & Atualizações ▼</button>
+            <div class="panel">
+                <button class="btn" onclick="verificarAtualizacao()" data-i18n="btnUpdate">🔄 Verificar Updates</button>
+                <button class="btn btn-github" onclick="abrirLink('https://github.com/JhonVitor22/Ultimate-V-Tools./releases/')">
+                    <img src="./imagens/github.png" width="20"> 
+                    <span data-i18n="btnGithub">Baixar Última Versão (GitHub)</span>
+                </button>
+            </div>
+        </div> 
+
+        <div id="progress-container" style="display: none; margin-top: 5px; margin-bottom: 10px; padding: 0 5px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                <span id="progress-text" style="font-size: 10px; color: #888;" data-i18n="progAguardando">🚀 Aguardando Protocolo...</span>
+                <span id="progress-percent" style="font-size: 10px; color: var(--opt-cyan); font-weight: bold;">0%</span>
+            </div>
+            <div style="width: 100%; height: 6px; background: rgba(0,0,0,0.4); border-radius: 3px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
+                <div id="progress-bar" style="width: 0%; height: 100%; border-radius: 3px; transition: width 0.3s ease, background-color 0.5s ease; box-shadow: 0 0 10px var(--opt-cyan);"></div>
+            </div>
+        </div>
+
+        <div id="terminal">
+            <span style="color: #16cf3b" data-i18n="termPronto">> Sistema Pronto.</span><br>
+        </div>
+        
+        <div class="footer-container">
+            <span style="font-size: 10px; color: #555;">By: Jhon Vitor</span>
+            <span style="font-size: 10px; color: #777;">v2.2.5 Elite Edition</span>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+    <script>
+        async function boot() {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                const mainUi = document.getElementById('main-ui');
+                if (splash) splash.style.opacity = '0';
+                setTimeout(() => { 
+                    if (splash) splash.style.display = 'none'; 
+                    if (mainUi) {
+                        mainUi.style.display = 'flex'; 
+                        setTimeout(() => mainUi.style.opacity = '1', 50);
+                    }
+                }, 1200);
+            }, 6500);
+        }
+
+        const acc = document.getElementsByClassName("accordion");
+        for (let i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const panel = this.nextElementSibling;
+                panel.style.display = panel.style.display === "block" ? "none" : "block";
+            });
+        }
+        window.addEventListener('DOMContentLoaded', boot);
+    </script>
+</body>
+</html>
