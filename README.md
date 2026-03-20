@@ -2,10 +2,10 @@
   <table border="0">
     <tr>
       <td align="center">
-        <img src="https://raw.githubusercontent.com/JhonVitor22/Ultimate-V-Tools./main/imagens/vtools.png" width="90" alt="UVT Logo">
+        <img src="https://raw.githubusercontent.com/JhonVitor22/Ultimate-V-Tools./main/front-end/imagens/vtools.png" width="90" alt="UVT Logo">
       </td>
       <td align="center">
-        <img src="https://raw.githubusercontent.com/JhonVitor22/Ultimate-V-Tools./main/imagens/abertura_vtools.webp" width="600" alt="Ultimate V-Tools Elite Edition Opening Animation">
+        <img src="https://raw.githubusercontent.com/JhonVitor22/Ultimate-V-Tools./main/front-end/imagens/abertura_vtools.webp" width="600" alt="Ultimate V-Tools Elite Edition Opening Animation">
       </td>
     </tr>
   </table>
