@@ -15,7 +15,7 @@
 
 <h2>📑 Visão Geral do Sistema</h2>
 <p>
-  A versão <b>v2.2.6-elite</b> introduz otimizações críticas na comunicação entre o <b>Frontend (WebView2)</b> e o <b>Kernel do Windows</b>. Com a implementação de novos comandos nativos em <b>Rust</b>, esta build foca na redução drástica de latência de entrada e no gerenciamento eficiente de privilégios elevados para protocolos de ativação e otimização de GPU.
+  A versão <b>v2.2.6-elite</b> introduz o <b>Remapeamento Estrutural de Interface</b>. Com a nova arquitetura de camadas, eliminamos conflitos de renderização entre o <i>backdrop-filter</i> e os seletores de opções, garantindo que cada pixel do efeito Neon responda com precisão cirúrgica ao input do usuário.
 </p>
 
 <table width="100%">
@@ -28,24 +28,24 @@
   </thead>
   <tbody>
     <tr>
+      <td><b>Interface Remapeada</b></td>
+      <td>Novo Grid de colisão para botões e inputs, otimizando o DOM.</td>
+      <td align="center">🎯 Precisão</td>
+    </tr>
+    <tr>
       <td><b>Kernel Engine</b></td>
-      <td>Ajustes dinâmicos via <code>bcdedit</code> e <code>GraphicsDrivers</code> no registro HKLM.</td>
+      <td>Ajustes dinâmicos via <code>bcdedit</code> e <code>GraphicsDrivers</code>.</td>
       <td align="center">🚀 Low Latency</td>
     </tr>
     <tr>
       <td><b>Drag API v2</b></td>
-      <td>Novo comando <code>start_drag</code> via Rust Bridge para janelas Frameless.</td>
+      <td>Novo comando <code>start_drag</code> via Rust Bridge nativo.</td>
       <td align="center">🖱️ Estabilidade</td>
     </tr>
     <tr>
       <td><b>Visual Core</b></td>
-      <td>Efeito <i>Neon Glow Borders</i> com renderização acelerada por GPU.</td>
+      <td>Efeito <i>Neon Glow Borders</i> com profundidade adaptativa.</td>
       <td align="center">✨ UI Elite</td>
-    </tr>
-    <tr>
-      <td><b>Network Stack</b></td>
-      <td>Protocolos <i>TCP Autotuning</i> e <i>RSS</i> integrados para otimização de rede.</td>
-      <td align="center">🌐 Conectividade</td>
     </tr>
   </tbody>
 </table>
@@ -54,9 +54,9 @@
 
 <h2>🛠️ Engenharia de Software</h2>
 <ul>
-  <li><b>Custom Window Control:</b> Migração total para a API de arraste nativa do Tauri v2, eliminando falhas de foco em interfaces com <code>backdrop-filter</code> pesado.</li>
-  <li><b>GPU Scheduler Integration:</b> Implementação de chaves de registro para <i>Hardware Accelerated GPU Scheduling</i>, permitindo melhor gerenciamento de memória de vídeo.</li>
-  <li><b>Async Licensing Flow:</b> Sistema de licenciamento HWID/Ohook operando em threads isoladas, garantindo que a UI permaneça responsiva durante a comunicação com servidores KMS.</li>
+  <li><b>Interface Mapping Logic:</b> A UI foi totalmente remapeada para separar as áreas de arraste (Drag Regions) dos seletores de opções. Isso evita que o clique em um botão de função seja interpretado como um comando de movimento de janela.</li>
+  <li><b>Neon Border Clipping:</b> Implementação de <i>Box-Shadow</i> inteligente que respeita os limites dos botões remapeados, evitando artefatos visuais no Terminal.</li>
+  <li><b>GPU Scheduler Integration:</b> Ativação de chaves de registro para <i>Hardware Accelerated GPU Scheduling</i> diretamente pelo backend em Rust.</li>
 </ul>
 
 <hr>
@@ -90,12 +90,12 @@
 
 <blockquote>
   <b>⚠️ NOTA DE DEPLOYMENT:</b><br>
-  Esta versão manipula permissões de baixo nível (Kernel) e subsistemas de vídeo. A execução como <b>Administrador</b> é mandatória para evitar falhas de acesso (Access Denied) nos comandos <code>reg add</code> e <code>netsh</code>.
+  O remapeamento da interface exige o <b>WebView2 Runtime</b> atualizado. A execução como <b>Administrador</b> continua sendo mandatória para as funções de Kernel e Rede.
 </blockquote>
 
 <hr>
 
 <div align="center">
   <p><b>Developer:</b> Jhon Vitor | <b>Engine:</b> Tauri v2 + Rust | <b>Status:</b> Stable v2.2.6 🟢</p>
-  <p><i>"Performance isn't an option, it's the standard."</i></p>
+  <p><i>"Engineered with precision. Driven by performance."</i></p>
 </div>
