@@ -97,5 +97,5 @@
 
 <div align="center">
   <p><b>Developer:</b> Jonatan V. L. Santos 😎 | <b>Engine:</b> Tauri v2 (Rust) | <b>UI:</b> Vue 3</p>
-  <p><i>"Engineered with precision. Driven by performance. Signed by Arcan."</i></p>
+  <p><i>"Engineered with precision. Driven by performance. Signed by Jonatan V. L. Santos."</i></p>
 </div>
