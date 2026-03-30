@@ -13,9 +13,9 @@
   <hr>
 </div>
 
-<h2>📑 Visão Geral do Sistema</h2>
+<h2>📑 Visão Geral do Sistema (Elite Update)</h2>
 <p>
-  A versão <b>v2.2.6-elite</b> consolida a estabilidade do ecossistema UVT com a introdução do <b>Universal License Detection (ULD)</b>. Esta atualização reescreve o motor de verificação de WMI para garantir paridade total entre Windows 10 e 11, eliminando falsos positivos e otimizando o tempo de resposta do Kernel em 40%.
+  A versão <b>v2.2.6-elite</b> redefine a experiência do usuário com o novo <b>Visual Core Engine</b>. Implementamos uma interface baseada em <i>Glassmorphism</i> total, removendo barreiras visuais e introduzindo elementos dinâmicos de alta fidelidade, garantindo que o software não seja apenas uma ferramenta, mas uma peça de engenharia estética.
 </p>
 
 <table width="100%">
@@ -23,65 +23,66 @@
     <tr style="background-color: #161b22;">
       <th align="left">Módulo</th>
       <th align="left">Implementação Técnica (v2.2.6)</th>
-      <th align="center">Impacto</th>
+      <th align="center">Status</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><b>Universal License Engine</b></td>
-      <td>Implementação de <code>Get-WmiObject</code> com filtragem numérica via Rust Bridge.</td>
-      <td align="center">🛡️ Cross-OS</td>
+      <td><b>Visual Core v2</b></td>
+      <td>Efeito <i>Glassmorphism</i> real com <code>backdrop-filter</code> e renderização WebView2.</td>
+      <td align="center">✨ Ativo</td>
     </tr>
     <tr>
-      <td><b>Admin Elevation v2</b></td>
-      <td>Injeção de <code>App.manifest</code> nativa via Tauri Bundle (Zero-Conflict).</td>
-      <td align="center">🔑 Full Access</td>
+      <td><b>Dynamic Signature</b></td>
+      <td>Assinatura <b>Arco Celeste</b> com gradiente animado e versão em <b>Dourado Elite</b>.</td>
+      <td align="center">🌈 Premium</td>
     </tr>
     <tr>
-      <td><b>Kernel Engine</b></td>
-      <td>Ajustes dinâmicos via <code>bcdedit</code> e otimização de ticks do processador.</td>
-      <td align="center">🚀 Low Latency</td>
+      <td><b>Universal License</b></td>
+      <td>Motor de detecção via Rust Bridge compatível com HWID, KMS e OHOOK.</td>
+      <td align="center">🛡️ Estável</td>
     </tr>
     <tr>
-      <td><b>Visual Core</b></td>
-      <td>Efeito <i>Glassmorphism</i> com aceleração de hardware via WebView2.</td>
-      <td align="center">✨ UI Elite</td>
+      <td><b>Kernel Boost</b></td>
+      <td>Otimização de prioridades de CPU (Xeon/Intel/AMD) e limpeza profunda de RAM.</td>
+      <td align="center">🚀 High-Perf</td>
     </tr>
   </tbody>
 </table>
 
 <br>
 
-<h2>🛠️ Engenharia de Software & Backend</h2>
+<h2>🛠️ Engenharia de Software & Interface</h2>
 <ul>
-  <li><b>Universal Status Interrogation:</b> O sistema agora utiliza consultas assíncronas ao repositório WMI (Windows Management Instrumentation), validando o <code>LicenseStatus</code> através de contagem de instâncias físicas. Isso garante que o app reconheça ativações permanentes (HWID) e KMS em qualquer build do Windows.</li>
-  <li><b>Manifest-Level Security:</b> Diferente de métodos tradicionais, a v2.2.6 utiliza injeção de manifesto em tempo de linkagem, garantindo que o Windows trate o binário como "Trusted Administrator" desde o primeiro ciclo de execução.</li>
-  <li><b>Memory Clean Logic:</b> Otimização da limpeza de memória RAM utilizando <code>Clear-Variable</code> e purga de caches temporários do sistema, respeitando os diferentes caminhos de diretório entre Win 10 e Win 11.</li>
+  <li><b>Advanced Glassmorphism:</b> O rodapé e os menus agora utilizam refração de luz em tempo real, integrando-se perfeitamente ao wallpaper do usuário e mantendo a legibilidade com tipografia serifada de alta precisão.</li>
+  <li><b>Dynamic UI Feedback:</b> Introdução do motor de log inteligente que formata relatórios de hardware (CPU/RAM) em quadros técnicos organizados, eliminando poluição visual no terminal.</li>
+  <li><b>Tauri v2 + Rust:</b> Backend blindado com execução assíncrona de comandos via PowerShell 7 (onde disponível) e suporte nativo a UTF-8 para evitar caracteres corrompidos.</li>
+  <li><b>Progressive Update Check:</b> Verificação automática de versões diretamente via GitHub API integrada ao botão de versão dourada.</li>
 </ul>
 
 <hr>
 
 <h2>📦 Artefatos de Distribuição (v2.2.6 - Estável)</h2>
-<p>Valide a integridade do seu binário utilizando o Hash SHA-256 abaixo:</p>
+<p>Valide a integridade do seu binário utilizando o Hash SHA-256 oficial:</p>
 
 <table>
   <thead>
     <tr style="background-color: #161b22;">
       <th align="left">🚀 Download Direto</th>
       <th align="left">Tipo</th>
-      <th align="left">Hash SHA-256 (Checksum)</th>
+      <th align="left">Versão</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><a href="https://github.com/JhonVitor22/Ultimate-V-Tools./releases/download/v2.2.6/Ultimate.V-Tools_2.2.6_x64_pt-BR.msi"><b>📥 Baixar Instalador (.msi)</b></a></td>
-      <td>Instalador</td>
-      <td><code>B2F8E91C5029A1D5CCF9E3D54D4D488A9B9B532159B002GE08G322F852925186</code></td>
+      <td>Instalador Win x64</td>
+      <td>v2.2.6-stable</td>
     </tr>
     <tr>
       <td><a href="https://github.com/JhonVitor22/Ultimate-V-Tools./releases/download/v2.2.6/Ultimate.V-Tools_2.2.6_x64-setup.exe"><b>📥 Baixar Portátil (.exe)</b></a></td>
-      <td>Standalone</td>
-      <td><code>112618F9CFB5B644406B2DB2D1C22GE93CC5DDBC23B3F75C72F19G3EFC95F14B</code></td>
+      <td>Standalone Alpha</td>
+      <td>v2.2.6-stable</td>
     </tr>
   </tbody>
 </table>
@@ -89,13 +90,13 @@
 <br>
 
 <blockquote>
-  <b>⚠️ NOTA TÉCNICA SÊNIOR:</b><br>
-  Esta build utiliza o <b>NSIS PortugueseBR</b> para o instalador. Caso o instalador falhe em sistemas sem o runtime do C++, o binário <i>Standalone</i> executará os scripts via PowerShell nativo como fallback.
+  <b>⚠️ NOTA DO DESENVOLVEDOR:</b><br>
+  A <i>Elite Edition</i> foi otimizada para processadores multithread (Xeon E5 Series) e sistemas com Windows 10/11 atualizados. O efeito de transparência requer que as "Opções de Transparência" do Windows estejam ativadas.
 </blockquote>
 
 <hr>
 
 <div align="center">
-  <p><b>Developer:</b> Jhon Vitor | <b>Engine:</b> Tauri v2 (Rust) | <b>Status:</b> Stable v2.2.6 🟢</p>
-  <p><i>"Engineered with precision. Driven by performance."</i></p>
+  <p><b>Developer:</b> Jonatan V. L. Santos 😎 | <b>Engine:</b> Tauri v2 (Rust) | <b>UI:</b> Vue 3 (Vite)</p>
+  <p><i>"Engineered with precision. Driven by performance. Signed by Arcan."</i></p>
 </div>
