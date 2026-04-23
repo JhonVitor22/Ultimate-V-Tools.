@@ -2,7 +2,7 @@
   <table border="0">
     <tr>
       <td align="center">
-        <img src="https://raw.githubusercontent.com/JhonVitor22/Ultimate-V-Tools./main/front-end/imagens/vtools.jpg" width="90" alt="Core V-Tools Logo">
+        <img src="https://raw.githubusercontent.com/JhonVitor22/Ultimate-V-Tools./main/icons/vtools.ico" width="90" alt="Core V-Tools Logo">
       </td>
     </tr>
   </table>
