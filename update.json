@@ -1,0 +1,7 @@
+{
+  "version": "2.2.8",
+  "name": "Core V-Tools",
+  "url": "https://github.com/JhonVitor22/Ultimate-V-Tools./releases/download/v2.2.8/core-v-tools.exe",
+  "changelog": "Rebranding para Core V-Tools e implementação de Kernel Assíncrono."
+}
+feat: add update telemetry
