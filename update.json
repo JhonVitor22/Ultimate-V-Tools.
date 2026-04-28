@@ -1,7 +1,11 @@
 {
   "version": "3.0.0",
-  "name": "Core V-Tools",
-  "url": "https://github.com/JhonVitor22/Ultimate-V-Tools./releases/download/v3.0.0/Core V-tools portable.exe",
-  "changelog": "Rebranding para Core V-Tools e implementação de Kernel Assíncrono."
+  "notes": "Core V-tools.",
+  "pub_date": "2026-04-28T00:00:00Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "",
+      "url": "https://github.com/JhonVitor22/Ultimate-V-Tools/releases/download/v3.0.0/Core-V-Tools_3.0.0_x64_en-US.msi.zip"
+    }
+  }
 }
-feat: add update telemetry
